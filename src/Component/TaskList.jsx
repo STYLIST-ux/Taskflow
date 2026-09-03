@@ -1,6 +1,17 @@
+import { useState, useEffect } from "react"
 import "./TaskList.css"
 
 function TaskList({ tasks , setTasks, filter }) {
+
+  const [now, setNow] = useState(Date.now())
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setNow(Date.now())
+    },60000)
+
+    return () => clearInterval(timer)
+  },[])
 
   let filteredTasks = [...tasks] 
 
@@ -65,7 +76,7 @@ function TaskList({ tasks , setTasks, filter }) {
       <button className="clear-completed" onClick={clearCompleted}>Clear completed</button>
       <ul>
         {filteredTasks.map((list,idx) => {
-      const diff = Date.now() - new Date(list.createdAt).getTime()
+      const diff = now - new Date(list.createdAt).getTime()
       const minutes = Math.floor(diff / 60000)
 
       let stamp;
