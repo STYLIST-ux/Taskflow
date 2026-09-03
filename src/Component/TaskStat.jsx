@@ -16,6 +16,7 @@ function TaskStat({ tasks }) {
         <p>{`Total: ${all}`}</p>
         <p>{`Active: ${act}`}</p>
         <p>{`Completed: ${comp}`}</p>
+        <p>{act} tasks remaining</p>
       </div>
     </header>
   )

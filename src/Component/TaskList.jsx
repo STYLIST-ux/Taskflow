@@ -53,20 +53,43 @@ function TaskList({ tasks , setTasks, filter }) {
     setTasks(filtered)
   }
 
+  function clearCompleted() {
+    const remaining = tasks.filter(task => !task.completed)
+
+    setTasks(remaining)
+  }
+
   
   return (
     <section className="lists">
+      <button className="clear-completed" onClick={clearCompleted}>Clear completed</button>
       <ul>
-        {filteredTasks.map((list,idx) => (
-          <li key={list.id} className={list.completed ? "lxt completed" : "lxt"}>
-            <p>{list.title}</p>
+        {filteredTasks.map((list,idx) => {
+      const diff = Date.now() - new Date(list.createdAt).getTime()
+      const minutes = Math.floor(diff / 60000)
+
+      let stamp;
+
+      if(minutes === 0) {
+        stamp = "just Now"
+      }else {
+        stamp = `${minutes} minutes ago`
+      }
+      
+      return (
+        <li key={list.id} className={list.completed ? "lxt completed" : "lxt"}>
+            <div className="stamp">
+              <p>{list.title}</p>
+              <small>{stamp}</small>
+            </div>
             <div className="right">
               <div className={list.completed ? "dot active" : "dot"}></div>
               <button onClick={() => handleComplete(list.id)}>{list.completed ? "Undo" : "Complete"}</button>
               <button onClick={() => handleDelete(list.id)}>Delete</button>
             </div>
           </li>
-        ))}
+      )
+    })}
       </ul>
     </section>
   )

@@ -19,10 +19,17 @@ function TaskInput({
     setTasks([...tasks, {
       id: crypto.randomUUID(),
       title : query,
-      completed: false
+      completed: false,
+      createdAt: new Date().toISOString()
     }])
     setQuery("")
     inputRef.current.focus()
+  }
+
+  function handleKey(e) {
+    if(e.key === "Enter" && query.trim() !== "") {
+      handleClick()
+    }
   }
   
   return (
@@ -30,6 +37,7 @@ function TaskInput({
       <input 
         placeholder="what needs to be done?"
         onChange={handleChange}
+        onKeyDown={handleKey}
         value={query}
         ref={inputRef}
       />

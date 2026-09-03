@@ -20,6 +20,7 @@
   gap: 15px;
 
   padding: 15px 16px;
+
   border: 1px solid #252e3e;
   border-radius: 12px;
 
@@ -36,32 +37,55 @@
   animation: cardIn 0.4s ease both;
 }
 
-.lxt p {
-  margin: 0;
-}
-
-.lxt.completed p {
-  text-decoration: line-through;
-  color: #6b7280;
-  transition: 0.3s ease;
-}
-
 .lxt:hover {
   border-color: #374151;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
+/* Task information */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.stamp {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stamp p {
+  margin: 0;
+
+  color: #e5e7eb;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.stamp small {
+  color: #67e8f9;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.lxt.completed .stamp small {
+  color: #64748b;
+  opacity: 1;
+}
+
+.lxt.completed .stamp p {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.lxt.completed .stamp small {
+  color: #4b5563;
 }
 
 /* Right side */
@@ -70,6 +94,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+
   flex-shrink: 0;
 }
 
@@ -78,8 +103,13 @@
 .dot {
   width: 8px;
   height: 8px;
+
+  flex-shrink: 0;
+
   border-radius: 50%;
+
   background: #4b5563;
+
   transition: 0.3s ease;
 }
 
@@ -93,25 +123,46 @@
   animation: pulse 1.8s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
+/* Clear completed */
 
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+.clear-completed {
+  display: block;
+
+  margin: 0 0 12px auto;
+
+  padding: 8px 13px;
+
+  border: 1px solid #374151;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #9ca3af;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.clear-completed:hover {
+  color: #fca5a5;
+
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.clear-completed:active {
+  transform: scale(0.96);
 }
 
 /* Buttons */
 
 .lxt button {
   flex-shrink: 0;
-  width: 82px;
 
+  width: 82px;
   padding: 8px 0;
 
   border: 1px solid #374151;
@@ -142,6 +193,36 @@
   transform: scale(0.95);
 }
 
+/* Card animation */
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dot animation */
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Empty state */
 
 .msg {
   width: min(600px, 92%);
@@ -177,5 +258,10 @@
 
   .lxt button {
     width: 72px;
+  }
+
+  .stamp {
+    min-width: 0;
+    flex: 1;
   }
 }
