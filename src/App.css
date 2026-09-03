@@ -1,0 +1,61 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #f8fafc;
+  background: #0b0f19;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #0b0f19;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 1px 0 60px;
+}
+
+.app-header {
+  width: min(600px, 92%);
+  margin: 55px auto 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+@media (max-width: 500px) {
+  .task-input {
+    flex-direction: column;
+  }
+
+  .task-input button {
+    height: 46px;
+  }
+
+  .lxt {
+    padding: 13px;
+  }
+
+  .app-header h1 {
+    font-size: 1.7rem;
+  }
+}

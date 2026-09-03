@@ -1,0 +1,181 @@
+.lists {
+  width: min(600px, 92%);
+  margin: 0 auto;
+}
+
+.lists ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lxt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 15px 16px;
+  border: 1px solid #252e3e;
+  border-radius: 12px;
+
+  background: #151b27;
+  color: #e5e7eb;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  animation: cardIn 0.4s ease both;
+}
+
+.lxt p {
+  margin: 0;
+}
+
+.lxt.completed p {
+  text-decoration: line-through;
+  color: #6b7280;
+  transition: 0.3s ease;
+}
+
+.lxt:hover {
+  border-color: #374151;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Right side */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Status dot */
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4b5563;
+  transition: 0.3s ease;
+}
+
+.dot.active {
+  background: #10b981;
+
+  box-shadow:
+    0 0 5px #10b981,
+    0 0 10px rgba(16, 185, 129, 0.45);
+
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Buttons */
+
+.lxt button {
+  flex-shrink: 0;
+  width: 82px;
+
+  padding: 8px 0;
+
+  border: 1px solid #374151;
+  border-radius: 8px;
+
+  background: #1f2937;
+  color: #d1d5db;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.lxt button:hover {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+.lxt button:active {
+  transform: scale(0.95);
+}
+
+
+.msg {
+  width: min(600px, 92%);
+  margin: 30px auto;
+
+  padding: 30px 20px;
+
+  text-align: center;
+
+  border: 1px dashed #252e3e;
+  border-radius: 12px;
+
+  background: #111722;
+}
+
+.msg p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 500px) {
+  .lxt {
+    padding: 13px;
+  }
+
+  .right {
+    gap: 7px;
+  }
+
+  .lxt button {
+    width: 72px;
+  }
+}

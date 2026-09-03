@@ -1,0 +1,39 @@
+header {
+  width: min(600px, 92%);
+  margin: 30px auto 25px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.headTitle h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.8px;
+}
+
+.headTitle p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.stat {
+  display: flex;
+  gap: 14px;
+}
+
+.stat p {
+  margin: 0;
+  padding: 7px 10px;
+
+  border: 1px solid #252e3e;
+  border-radius: 8px;
+
+  background: #151b27;
+  color: #d1d5db;
+
+  font-size: 12px;
+}
